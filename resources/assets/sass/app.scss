@@ -1,0 +1,56 @@
+
+// Fonts
+@import "/vendor/font-awesome/css/font-awesome.min.css";
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+@import "/vendor/adminlte/css/AdminLTE.min.css";
+@import "/vendor/adminlte/css/skins/skin-blue.min.css";
+@import "/assets/css/plugins.css";
+
+@mixin transform($args) {
+  -webkit-transform: $args;
+  -moz-transform: $args;
+  -ms-transform: $args;
+  -o-transform: $args;
+  transform: $args;
+}
+
+@keyframes fadeInDown {
+	0% {
+		opacity: 0;
+		@include transform(translate3d(0,-20%,0));
+	}
+}
+@keyframes fadeInUp {
+	0% {
+		opacity: 0;
+		@include transform(translate3d(0, 20%,0));
+	}
+}
+
+.navbar-nav {
+	>.user-menu, >.notifications-menu {
+		>.dropdown-menu {
+			width:240px;
+		}
+	}
+}
+
+.btn-group-sm>.btn, .btn-sm, .btn {
+	border-radius:0;
+}
+
+.box-body.widget-user {
+	.widget-user-image {
+		top:80px; 
+		> img {
+			width:100px;
+			height:100px;
+		}
+	}
+}
