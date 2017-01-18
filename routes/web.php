@@ -13,7 +13,10 @@
 
 Route::get('/', 'App\ImageController@index');
 
+Route::get('excel', ['as' => 'excel', 'uses' => 'App\ExcelController@index']);
+
 Route::post('image/handle', ['as' => 'image.handle', 'uses' => 'App\ImageController@handle']);
 
-Route::get('excel', ['as' => 'excel', 'uses' => 'App\ExcelController@index']);
-//Route::get('image-resize/{file}/{w?}/{h?}', ['as' => 'app.image.handle', 'uses' => 'App\AppController@handle'])->where(['file' => '(.*?)']);
+Route::post('excel/handle', ['as' => 'excel.handle', 'uses' => 'App\ExcelController@handle']);
+
+

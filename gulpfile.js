@@ -24,7 +24,7 @@ elixir(mix => {
         .copy(config.paths.plugins.template.in, config.paths.plugins.template.out)
         .bower(config.paths.plugins.bower, plugins.bower)
         .webpack('app.js')
-        .sass('app.scss','public/assets/css/app.css')
+        .sass('app.scss', 'public/assets/css/app.css')
         .styles([
             '../bower/sweetalert/dist/sweetalert.css',
             '../bower/animate.css/animate.min.css',
@@ -32,12 +32,15 @@ elixir(mix => {
             '../bower/bootstrap-toggle/css/bootstrap-toggle.min.css',
             ], 'public/assets/css/plugins.css')
         .scripts([
+            'main.js',
+        ], 'public/assets/js/main.js')
+        .scripts([
             '../bower/AdminLTE/dist/js/app.min.js',
             '../bower/jquery-slimscroll/jquery.slimscroll.min.js',
             '../bower/sweetalert/dist/sweetalert.min.js',
             '../bower/toastr/toastr.min.js',
             '../bower/bootstrap-toggle/js/bootstrap-toggle.min.js',
-          ],'public/assets/js/app.js')
+          ], 'public/assets/js/app.js')
         .version([
             'assets/js/app.js',
             'assets/css/app.css',
