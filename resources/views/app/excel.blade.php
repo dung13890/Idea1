@@ -48,6 +48,9 @@
 @endsection
 
 @push('prescripts')
+<script>
+    var flash_message = '{!! session("flash_message") !!}';
+</script>
 {{ Html::script('vendor/jasny-bootstrap/js/jasny-bootstrap.min.js') }}
 
 {!! Html::script('vendor/fileinput/js/fileinput.min.js') !!}

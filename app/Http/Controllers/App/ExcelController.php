@@ -16,18 +16,23 @@ class ExcelController extends Controller
 
     public function handle(ExcelUploadRequest $request)
     {
+        $errors = [
+            'code' => 0,
+            'message' => null,
+        ];
         $file = $request->excel_upload;
         $fileName = $file->getClientOriginalName();
 
         try {
-            Excel::load($file, function ($reader) {
+            \Excel::load($file, function ($reader) {
 
             });
-            \Session::flash('success', 'Users uploaded successfully.');
+            $errors['message'] = 'Users uploaded successfully.';
         } catch (\Exception $e) {
-            \Session::flash('error', $e->getMessage());
+            $errors['code'] = 100;
+            $errors['message'] = $e->getMessage();
         }
 
-        return redirect(route('excel'));
+        return redirect(route('excel'))->with('flash_message', json_encode($errors, true));
     }
 }

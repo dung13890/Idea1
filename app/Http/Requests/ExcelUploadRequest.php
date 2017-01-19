@@ -14,7 +14,7 @@ class ExcelUploadRequest extends AbstractRequest
     public function rules()
     {
         return [
-            'excel_upload' => 'required|max:32000|mimes:xlsx,xls,csv,tsv',
+            'excel_upload' => 'required|max:32000',
         ];
     }
 }
