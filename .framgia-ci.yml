@@ -1,0 +1,9 @@
+project_type: php
+test:
+  phpcs:
+  phpunit:
+    command:
+      - php artisan migrate --database=mysql_test
+      - php -dzend_extension=xdebug.so vendor/bin/phpunit
+        --coverage-clover=.framgia-ci-reports/coverage-clover.xml
+        --coverage-html=.framgia-ci-reports/coverage

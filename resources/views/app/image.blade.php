@@ -76,6 +76,13 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="from-group">
+                            <h4><b>Save</b></h4>
+                            <label class="radio-inline">{!! Form::radio('extension', 1, true ) !!}  default</label>
+                            <label class="radio-inline">{!! Form::radio('extension', 2 ) !!}  jpg</label>
+                            <label class="radio-inline">{!! Form::radio('extension', 3 ) !!}  png</label>
+                            <label class="radio-inline">{!! Form::radio('extension', 4 ) !!}  gif</label>
+                        </div>
                         <div class="form-group text-center">
                             <div class="checkbox">
                                 <label>

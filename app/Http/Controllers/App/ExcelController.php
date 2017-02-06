@@ -5,7 +5,6 @@ namespace App\Http\Controllers\App;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ExcelUploadRequest;
-use Maatwebsite\Excel\Facades\Excel;
 
 class ExcelController extends Controller
 {
@@ -16,23 +15,30 @@ class ExcelController extends Controller
 
     public function handle(ExcelUploadRequest $request)
     {
-        $errors = [
+        $status = [
             'code' => 0,
             'message' => null,
         ];
         $file = $request->excel_upload;
         $fileName = $file->getClientOriginalName();
+        $path = 'uploads/excel/temp/';
+        $destinationPath = public_path($path);
 
-        try {
-            \Excel::load($file, function ($reader) {
-
-            });
-            $errors['message'] = 'Users uploaded successfully.';
-        } catch (\Exception $e) {
-            $errors['code'] = 100;
-            $errors['message'] = $e->getMessage();
+        if (! \File::isFile($destinationPath . $fileName)) {
+            $file->move($destinationPath , $fileName);
         }
 
-        return redirect(route('excel'))->with('flash_message', json_encode($errors, true));
+        try {
+            \Excel::load($path . $fileName, function ($reader) {
+                dd($reader->get());
+            });
+            $status['message'] = 'Users uploaded successfully.';
+        } catch (\Exception $e) {
+            dd($e);
+            $status['code'] = 100;
+            $status['message'] = $e->getMessage();
+        }
+
+        return redirect(route('excel'))->with('flash_message', json_encode($status, true));
     }
 }

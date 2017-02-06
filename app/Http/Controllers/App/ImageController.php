@@ -18,7 +18,7 @@ class ImageController extends Controller
         $this->validate($request, [
             'width' => "required|numeric",
             'height' => "required|numeric",
-            'image' => 'image|mimes:jpeg,jpg,gif,bmp,png|max:3200',
+            'image' => 'required|image|mimes:jpeg,jpg,gif,bmp,png|max:3200',
         ]);
         $file = $request->image;
 
@@ -37,7 +37,7 @@ class ImageController extends Controller
         $destinationPath = public_path($path);
 
         if ( ! \File::isFile($destinationPath) ) {
-            $imageResize = \Image::make($file)->fit($width, $height)->save($destinationPath)->filesize('30000');
+            $imageResize = \Image::make($file)->fit($width, $height)->save($destinationPath);
         }
 
         if ($request->has('download')) {
