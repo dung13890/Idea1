@@ -3,9 +3,6 @@ build:
   commands:
     - cp .env.example .env
     - composer install
-    - bower install
-    - npm install
-    - gulp
     - framgia-ci test-connect 127.0.0.1 3306 60
     - framgia-ci run
 compose:
